@@ -1,8 +1,8 @@
 let
 
-  pkgs = import ./nixpkgs.nix ;
-  server = pkgs.callPackage ./server/default.nix {};
-  client = pkgs.callPackage ./client/default.nix {};
+  pkgs = import ./nixpkgs.nix;
+  server = pkgs.callPackage ./server/default.nix { inherit pkgs; };
+  client = pkgs.callPackage ./client/default.nix { inherit pkgs; };
 
 in
 

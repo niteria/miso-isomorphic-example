@@ -2,47 +2,24 @@ let
 
   bootstrap = import <nixpkgs> {};
 
-  nixpkgs-src = bootstrap.fetchFromGitHub {
-    owner = "NixOS";
-    repo  = "nixpkgs";
-    rev = "725b5499b89fe80d7cfbb00bd3c140a73cbdd97f";
-    sha256 = "0xdhv9k0nq8d91qdw66d6ln2jsqc9ij7r24l9jnv4c4bfpl4ayy7";
+  misoTarball = bootstrap.fetchFromGitHub {
+    owner = "dmjio";
+    repo = "miso";
+    rev = "2c193a3253216d70f0ac182fbe9c801de00363ae";
+    sha256 = "1ywksdzcfd339x1hxp5pvkgbv9mdy1y0971k8v161hg33na2p8wz";
   };
 
-  config = { 
-    packageOverrides = pkgs: rec {
-      haskell = pkgs.haskell // {
-        packages = pkgs.haskell.packages // {
+  miso = import "${misoTarball}" { } ;
 
-          ghc = pkgs.haskell.packages.ghc864;
+  inherit (miso) pkgs;
 
-          } // {
-
-          # Many packages don't build on ghcjs because of a dependency on doctest
-          # (which doesn't build), or because of a runtime error during the test run.
-          # See: https://github.com/ghcjs/ghcjs/issues/711
-          ghcjs = pkgs.haskell.packages.ghcjs86.override {
-            overrides = self: super: with pkgs.haskell.lib; {
-              tasty-quickcheck = dontCheck super.tasty-quickcheck;
-              http-types       = dontCheck super.http-types;
-              http-media       = dontCheck super.http-media;
-              comonad          = dontCheck super.comonad;
-              semigroupoids    = dontCheck super.semigroupoids;
-              lens             = dontCheck super.lens;
-              QuickCheck       = dontCheck super.QuickCheck;
-
-              network = dontCheck (doJailbreak super.network_2_6_3_1);
-              servant-client = dontCheck (doJailbreak super.servant-client);
-              servant = dontCheck (doJailbreak super.servant);
-            };
-          };
-
-        };
+  pkgsWithGHC = pkgs // {
+    haskell = pkgs.haskell // {
+      packages = pkgs.haskell.packages // {
+        ghc = pkgs.haskell.packages.ghc865;
+        ghcjs = pkgs.haskell.packages.ghcjs86;
       };
     };
   };
 
-in
-
-  import nixpkgs-src { inherit config; }
-
+in pkgsWithGHC
