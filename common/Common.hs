@@ -76,6 +76,7 @@ homeView m =
         []
         [ button_ [ onClick SubtractOne ] [ text "-" ]
         , text $ Miso.ms $ show $ _counterValue m
+        , br_ []
         , button_ [ onClick AddOne ] [ text "+" ]
         ]
       , button_ [ onClick $ ChangeURI flippedLink ] [ text "Go to /flipped" ]
