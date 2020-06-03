@@ -78,6 +78,7 @@ homeView m =
         , text $ Miso.ms $ show $ _counterValue m
         , button_ [ onClick AddOne ] [ text "+" ]
         ]
+      , text $ Miso.ms $ show (_uri m)
       , button_ [ onClick $ ChangeURI flippedLink ] [ text "Go to /flipped" ]
       ]
 
@@ -91,6 +92,7 @@ flippedView m =
         , text $ Miso.ms $ show $ _counterValue m
         , button_ [ onClick SubtractOne ] [ text "-" ]
         ]
+      , text $ Miso.ms $ show (_uri m)
       , button_ [ onClick $ ChangeURI homeLink ] [ text "Go to /" ]
       ]
 
