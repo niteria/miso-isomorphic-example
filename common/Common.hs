@@ -77,9 +77,17 @@ homeView m =
         [ button_ [ onClick SubtractOne ] [ text "-" ]
         , text $ Miso.ms $ show $ _counterValue m
         , button_ [ onClick AddOne ] [ text "+" ]
+        , text $ Miso.ms $ v
+        , text $ Miso.ms $ fun $ _counterValue m
         ]
       , button_ [ onClick $ ChangeURI flippedLink ] [ text "Go to /flipped" ]
       ]
+    where
+      v | _counterValue m > 4 = fun $ _counterValue m + 1
+        | otherwise = ""
+      fun :: Int -> String
+      fun x | x > 0 = show x
+        | otherwise = "??"
 
 -- View function of the Home route
 flippedView :: Model -> View Action
