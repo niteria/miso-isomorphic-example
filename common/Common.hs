@@ -84,7 +84,7 @@ homeView m =
       ]
     where
       v | _counterValue m > 4 = fun $ _counterValue m + 1
-        | otherwise = ""
+        | otherwise = " "
       fun :: Int -> String
       fun x | x > 0 = show x
         | otherwise = "??"
