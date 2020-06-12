@@ -5,8 +5,8 @@ let
   misoTarball = bootstrap.fetchFromGitHub {
     owner = "dmjio";
     repo = "miso";
-    rev = "2c193a3253216d70f0ac182fbe9c801de00363ae";
-    sha256 = "1ywksdzcfd339x1hxp5pvkgbv9mdy1y0971k8v161hg33na2p8wz";
+    rev = "25ffd607f27f8282676e7000f7e311d0af0e6188";
+    sha256 = "06sqwwxzq2lwg2qiqri2hl2v70dkl6sr391035m8fqy9b4acalhf";
   };
 
   miso = import "${misoTarball}" { } ;
