@@ -75,6 +75,7 @@ homeView m =
       [ div_
         []
         [ button_ [ onClick SubtractOne ] [ text "-" ]
+        , text $ Miso.ms $ show $ _uri m
         , text $ Miso.ms $ show $ _counterValue m
         , button_ [ onClick AddOne ] [ text "+" ]
         , text $ Miso.ms $ v
