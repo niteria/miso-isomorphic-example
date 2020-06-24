@@ -17,6 +17,7 @@ import qualified Servant.Links as Servant
 import qualified Miso
 import Miso ( View )
 import Miso.Html
+import qualified Miso.Html.Element as Html
 import qualified Miso.String as Miso
 import qualified Network.URI as Network
 
@@ -79,8 +80,8 @@ homeView m =
         , button_ [ onClick AddOne ] [ text "+" ]
         ]
       , button_ [ onClick $ ChangeURI flippedLink ] [ text "Go to /flipped" ]
-      , styleRaw_ [] "div > button { background-color: orange; }"
-      , scriptRaw_ [] "console.log('<test>')"
+      , Html.style_ [] "div > button { background-color: orange; }"
+      , script_ [] "console.log('<test>')"
       -- These three will mangle the CSS and JS correspondingly:
       -- , nodeHtml "style" [] [text "div > button { background-color: orange; }"]
       -- , nodeHtml "script" [] [text "console.log('<test>')"]
