@@ -3,10 +3,10 @@ let
   bootstrap = import <nixpkgs> {};
 
   misoTarball = bootstrap.fetchFromGitHub {
-    owner = "dmjio";
+    owner = "niteria";
     repo = "miso";
-    rev = "2c193a3253216d70f0ac182fbe9c801de00363ae";
-    sha256 = "1ywksdzcfd339x1hxp5pvkgbv9mdy1y0971k8v161hg33na2p8wz";
+    rev = "02dd2a3734e1cb6cfb29c97d81660d06aff10dba";
+    sha256 = "09mkc71f0qzfaxrd7zxxlx57yy8bxrvq79ixax343bczxy9hr1aq";
   };
 
   miso = import "${misoTarball}" { } ;

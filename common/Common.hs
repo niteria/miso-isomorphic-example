@@ -79,6 +79,12 @@ homeView m =
         , button_ [ onClick AddOne ] [ text "+" ]
         ]
       , button_ [ onClick $ ChangeURI flippedLink ] [ text "Go to /flipped" ]
+      , styleRaw_ [] "div > button { background-color: orange; }"
+      , scriptRaw_ [] "console.log('<test>')"
+      -- These three will mangle the CSS and JS correspondingly:
+      -- , nodeHtml "style" [] [text "div > button { background-color: orange; }"]
+      -- , nodeHtml "script" [] [text "console.log('<test>')"]
+      -- , script_ [] [text "console.log('<test>')"]
       ]
 
 -- View function of the Home route
