@@ -1,0 +1,1 @@
+tmux split-window -h 'nix-shell client --run reload' && tmux split-window -h 'nix-shell client --arg jsaddle false' && tmux select-layout even-horizontal && nix-shell server --run reload 

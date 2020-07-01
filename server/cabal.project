@@ -1,0 +1,4 @@
+packages: ../*.cabal
+
+package miso-isomorphic-example
+  flags: Prod
