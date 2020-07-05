@@ -29,9 +29,9 @@ import Miso (View)
 
 main :: IO ()
 main = do
-  IO.hPutStrLn IO.stderr "Running on port 3003..."
+  IO.hPutStrLn IO.stderr "Running on port 3012..."
   state <- newMVar 0
-  Wai.run 3002 $ Wai.logStdout $ compress $ app state
+  Wai.run 3012 $ Wai.logStdout $ compress $ app state
   where
     compress :: Wai.Middleware
     compress = Wai.gzip Wai.def {Wai.gzipFiles = Wai.GzipCompress}
