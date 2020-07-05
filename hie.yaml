@@ -1,0 +1,9 @@
+cradle:
+  multi:
+    - path: "./server"
+      config: { cradle: { cabal: { component: "miso-isomorphic-example:server" } } }
+    - path: "./common"
+      config: { cradle: { cabal: { component: "miso-isomorphic-example:server" } } }
+    - path: "./client"
+      config: { cradle: { cabal: { component: "miso-isomorphic-example:client" } } }
+

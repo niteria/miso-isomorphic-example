@@ -1,1 +1,1 @@
-(cd server; tmux split-window -h 'nix-shell') && nix-shell client/
+tmux split-window -h 'nix-shell server/' && nix-shell client/
