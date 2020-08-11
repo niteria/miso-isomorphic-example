@@ -16,7 +16,13 @@ let
     sha256 = "066vr1rfq6bjn3xx9g52z2vgp1ibyz50z3hzwaqq3fzxnr2srpjs";
   };
 
-  all-hies = import (fetchTarball "https://github.com/infinisil/all-hies/tarball/master") {};
+  all-hies = import (bootstrap.fetchFromGitHub {
+    owner = "Infinisil";
+    repo = "all-hies";
+    rev = "4b6aab017cdf96a90641dc287437685675d598da";
+    sha256 = "0ap12mbzk97zmxk42fk8vqacyvpxk29r2wrnjqpx4m2w9g7gfdya";
+  }) {};
+
   hie = all-hies.selection { selector = p : { inherit (p) ghc865; }; };
 
   ghc865 = (pkgs.haskell.packages.ghc865.override {
